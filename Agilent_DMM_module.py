@@ -58,32 +58,50 @@ class Agilent34401A:
             print(f"Error in measure_voltage_dc: {e}")
             return None
  
-    def measure_voltage_ac(self, voltage_range='DEF', resolution='MAX'):
-        """Measure AC voltage with the specified range and resolution."""
-        try:
-            self.dmm.write(f'CONF:VOLT:AC {voltage_range}, {resolution}')
-            self._trigger_and_fetch()
-        except pyvisa.errors.VisaIOError as e:
-            print(f"VISA Error: {e}")
-            return None
+def measure_voltage_ac(self, voltage_range='DEF', resolution='MAX'):
+    """Measure AC voltage with the specified range and resolution."""
+    try:
+        # Configure the DMM for AC voltage measurement
+        self.dmm.write(f'CONF:VOLT:AC {voltage_range}, {resolution}')
+        # Use the _trigger_and_fetch method to execute the measurement and retrieve the result
+        return self._trigger_and_fetch()
+    except pyvisa.errors.VisaIOError as e:
+        print(f"VISA Error: {e}")
+        return None
+    except Exception as e:
+        print(f"Error in measure_voltage_ac: {e}")
+        return None
+
  
-    def measure_current_dc(self, current_range='DEF', resolution='MAX'):
-        """Measure DC current with the specified range and resolution."""
-        try:
-            self.dmm.write(f'CONF:CURR:DC {current_range}, {resolution}')
-            self._trigger_and_fetch()
-        except pyvisa.errors.VisaIOError as e:
-            print(f"VISA Error: {e}")
-            return None
+def measure_current_dc(self, current_range='DEF', resolution='MAX'):
+    """Measure DC current with the specified range and resolution."""
+    try:
+        # Configure the DMM for DC current measurement
+        self.dmm.write(f'CONF:CURR:DC {current_range}, {resolution}')
+        # Use the _trigger_and_fetch method to execute the measurement and retrieve the result
+        return self._trigger_and_fetch()
+    except pyvisa.errors.VisaIOError as e:
+        print(f"VISA Error: {e}")
+        return None
+    except Exception as e:
+        print(f"Error in measure_current_dc: {e}")
+        return None
+
  
-    def measure_current_ac(self, current_range='DEF', resolution='MAX'):
-        """Measure AC current with the specified range and resolution."""
-        try:
-            self.dmm.write(f'CONF:CURR:AC {current_range}, {resolution}')
-            self._trigger_and_fetch()
-        except pyvisa.errors.VisaIOError as e:
-            print(f"VISA Error: {e}")
-            return None
+def measure_current_ac(self, current_range='DEF', resolution='MAX'):
+    """Measure AC current with the specified range and resolution."""
+    try:
+        # Configure the DMM for AC current measurement
+        self.dmm.write(f'CONF:CURR:AC {current_range}, {resolution}')
+        # Use the _trigger_and_fetch method to execute the measurement and retrieve the result
+        return self._trigger_and_fetch()
+    except pyvisa.errors.VisaIOError as e:
+        print(f"VISA Error: {e}")
+        return None
+    except Exception as e:
+        print(f"Error in measure_current_ac: {e}")
+        return None
+
  
     def _trigger_and_fetch(self):
         """Trigger the DMM and fetch the measurement result."""
